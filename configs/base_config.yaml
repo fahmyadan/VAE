@@ -9,3 +9,20 @@ hydra:
   job:
     chdir: false
   verbose: false
+
+model:
+  trainer_params: ${trainer_params}  # forward top-level trainer_params
+
+trainer_params:
+  accelerator: "gpu"
+  devices: [0]
+  strategy: "auto"
+  max_epochs: 100
+  log_every_n_steps: 50
+  val_check_interval: 100
+  enable_checkpointing: true
+  enable_progress_bar: true
+  enable_model_summary: true
+  deterministic: false
+  accumulate_grad_batches: 1
+  precision: 32
